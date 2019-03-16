@@ -1,27 +1,28 @@
 #coding=utf-8
 
 
-import urllib.request
-import urllib.response
-import urllib.error
+#import urllib.request
+#import urllib.response
+#import urllib.error
+from urllib import request
 import re
 
 headers={
-"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
-"accept-encoding": "gzip, deflate, br",
-"accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
-"cache-control": "max-age=0",
-"cookie": '"UM_distinctid=16985f0f1b7369-0832d10ffa74ba-38395d03-100200-16985f0f1b83aa; HISTORY={video:[{"name":"\u590F\u76EE\u53CB\u4EBA\u5E10","link":"https://www.eqq9.com/vod/24981.html","pic":"https://wx1.sinaimg.cn/large/007vLMz8ly1g0ucziaynej307i0ah74g.jpg"}]}; CNZZDATA1273924305=1365087030-1552730049-%7C1552746148; ftcpvrich3523_fidx=1"',
-"upgrade-insecure-requests": "1",
-"user-agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+#"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+#"accept-encoding": "gzip, deflate, br",
+#"accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+#"cache-control": "max-age=0",
+#"cookie": '"UM_distinctid=16985f0f1b7369-0832d10ffa74ba-38395d03-100200-16985f0f1b83aa; HISTORY={video:[{"name":"\u590F\u76EE\u53CB\u4EBA\u5E10","link":"https://www.eqq9.com/vod/24981.html","pic":"https://wx1.sinaimg.cn/large/007vLMz8ly1g0ucziaynej307i0ah74g.jpg"}]}; CNZZDATA1273924305=1365087030-1552730049-%7C1552746148; ftcpvrich3523_fidx=1"',
+#"upgrade-insecure-requests": "1",
+    "user-agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
 
 }
-
+url = "https://www.eqq9.com/list/4.html"
 
 #try:
-request_Html=urllib.request.Request("https://www.eqq9.com/list/4.html",headers=headers)
-response_Html=urllib.request.urlopen(request_Html)
-decode_Html=response_Html.read().decode()
+request_Html=request.Request(url=url,headers=headers)
+response_Html=request.urlopen(request_Html)
+decode_Html=response_Html.read().decode('utf-8')
 print (decode_Html)
 
 #except:
