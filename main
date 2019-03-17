@@ -5,6 +5,7 @@
 #import urllib.response
 #import urllib.error
 from urllib import request
+
 import re
 
 headers={
@@ -14,7 +15,7 @@ headers={
 #"cache-control": "max-age=0",
 #"cookie": '"UM_distinctid=16985f0f1b7369-0832d10ffa74ba-38395d03-100200-16985f0f1b83aa; HISTORY={video:[{"name":"\u590F\u76EE\u53CB\u4EBA\u5E10","link":"https://www.eqq9.com/vod/24981.html","pic":"https://wx1.sinaimg.cn/large/007vLMz8ly1g0ucziaynej307i0ah74g.jpg"}]}; CNZZDATA1273924305=1365087030-1552730049-%7C1552746148; ftcpvrich3523_fidx=1"',
 #"upgrade-insecure-requests": "1",
-    "user-agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+"user-agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
 
 }
 url = "https://www.eqq9.com/list/4.html"
@@ -23,7 +24,32 @@ url = "https://www.eqq9.com/list/4.html"
 request_Html=request.Request(url=url,headers=headers)
 response_Html=request.urlopen(request_Html)
 decode_Html=response_Html.read().decode('utf-8')
-print (decode_Html)
+#print (decode_Html)
 
+
+
+
+#标题
+print('''eqq9
+         1.全部动画
+         2.排行
+         3.搜索
+         4.退出''')
+i=input("请选择：")
+num=0
+
+#def Alllist(decode_Html,i):
+if i=="1":
+    match=re.findall(r'<li title="(.*?)" class="w-newfigure w-newfigure-180x299">		',decode_Html)
+
+    for line in match:
+        num += 1
+        with open('title.txt', "a+") as f:
+            f.writelines(str(num)+" "+str(line)+'\n')
+
+
+    #print (match)
+else:
+    print("error")
 #except:
 #print (urllib.error)
